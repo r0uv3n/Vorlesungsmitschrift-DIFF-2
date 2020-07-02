@@ -25,11 +25,11 @@ Im Folgenden wollen wir Funktionen, die \fue gleich sind, miteinander identifizi
 \begin{definition}\label{stufen_mit_integral}
   Eine Stufenfunktion ist eine Funktion der Form
   \begin{equation*}
-    \varphi=\sum_{j=1}^{n}c_j \characteristicfunction;{Q},
+    \varphi=\sum_{j=1}^{n}c_j \chi_{Q_j},
   \end{equation*}
   \( Q_j=I_{j,1}\times\dotsb I_{j,n} \), \( I_{j,i} \) \emph{beschränkte} Intervalle.
   \begin{equation*}
-    \characteristicfunction{Q}{x}=\begin{cases}
+    \chi_{Q}{x}=\begin{cases}
       1&x\in Q\\
       0& x\not\in Q
     \end{cases}
@@ -54,7 +54,7 @@ Im Folgenden wollen wir Funktionen, die \fue gleich sind, miteinander identifizi
   \begin{subproof}
     \Obda \( I=\interval{0}{1} \) (den \( \set{0,1} \) ist Nullmenge). Angenommen, \texists  \( I_j \) offen \sd \( I\subset \bigcup I_j \) und \( \sum_{j=1}^{\infty}\abs{I_j}<\varepsilon \) mit \( 0<\varepsilon<1 \). \( \interval{0}{1} \) ist kompakt \timplies \texists \( i_1,\dotsc,i_k \) \sd
     \begin{equation*}
-      \interval{0}{1}\subset \bigcup_{j=1}^k \mathcal{U}_{i_j}\implies 1=\Integrate{0}{1}{x}\explain{\sum_{j=1}^{k}\characteristicfunction{I_{i_j}}{x}\geq 1\ (\text{\diffcourse{1}})}{\leq}\Integrate{\sum_{j=1}^{k}\characteristicfunction{I_{i_j}}{x}}{x}\explain{\text{\diffcourse{1}}}{=}\sum_{j=1}^{k}\Integrate{\characteristicfunction{I_{i_j}{x}}}{x}<\varepsilon\ \contra.
+      \interval{0}{1}\subset \bigcup_{j=1}^k \mathcal{U}_{i_j}\implies 1=\Integrate{0}{1}{x}\explain{\sum_{j=1}^{k}\chi_{I_{i_j}}{x}\geq 1\ (\text{\diffcourse{1}})}{\leq}\Integrate{\sum_{j=1}^{k}\chi_{I_{i_j}}{x}}{x}\explain{\text{\diffcourse{1}}}{=}\sum_{j=1}^{k}\Integrate{\chi_{I_{i_j}{x}}}{x}<\varepsilon\ \contra.
     \end{equation*}    
   \end{subproof}
   \end{proofdescription}
@@ -90,7 +90,7 @@ Im Folgenden wollen wir Funktionen, die \fue gleich sind, miteinander identifizi
     \end{equation*}
     Dies gilt dann
     \begin{equation*}
-      \frac{A}{\varepsilon}\sum_{k=1}^{m}\sum_{j=1}^{l_k}\volume{Q_{k,j}}\explain{\text{\Def }\mathcal{U}_{\varepsilon,k}}{\leq}\braceannotate{\Integrate{\varphi_k \characteristicfunction{\mathcal{U}_{\varepsilon,k}}}{x}}{\Integrate{\varphi_k}{x,\mathcal{U}_{\varepsilon,k}}}\leq \Integrate{\varphi_m}{x}\leq A.
+      \frac{A}{\varepsilon}\sum_{k=1}^{m}\sum_{j=1}^{l_k}\volume{Q_{k,j}}\explain{\text{\Def }\mathcal{U}_{\varepsilon,k}}{\leq}\braceannotate{\Integrate{\varphi_k \chi_{\mathcal{U}_{\varepsilon,k}}}{x}}{\Integrate{\varphi_k}{x,\mathcal{U}_{\varepsilon,k}}}\leq \Integrate{\varphi_m}{x}\leq A.
     \end{equation*}
   \end{proofdescription}
   
@@ -245,10 +245,10 @@ und für jedes feste \( k \) gilt
 \end{satz}
 \begin{bemerkung*}
   Die Voraussetzung ist wichtig:\\
-  Betrachte \( f_k=-\characteristicfunction.{\ointerval{-\infty}{0}}{}+\characteristicfunction.{\ointerval{0}{k}}{} \). Dann ist \( f=\sgn;\not\in \stufenfunktionen[2] \), \( \sgn{x}=\begin{cases}
+  Betrachte \( f_k=-\chi_{\ointerval{-\infty}{0}}+\chi_{\ointerval{0}{k}} \). Dann ist \( f=\sgn;\not\in \stufenfunktionen[2] \), \( \sgn{x}=\begin{cases}
     1&x>0\\ 0&x=0\\ -1&x<0.
   \end{cases} \)
-  Betrachte \( f_k=-\characteristicfunction-{\ointerval{k}{\infty}}{} \). Dann ist \( f=0\in \stufenfunktionen[2] \) aber \eqref{eq:beppo-levi} trifft nicht zu.
+  Betrachte \( f_k=-\chi_{\ointerval{k}{\infty}} \). Dann ist \( f=0\in \stufenfunktionen[2] \) aber \eqref{eq:beppo-levi} trifft nicht zu.
 \end{bemerkung*}
 \begin{proof}[Beweis von \ref{beppo-levi}]
   Für \( k\geq k_0 \) gilt \( \int f_k>-\infty \) (wegen der Monotonie). Sei \( k\geq k_0 \). Schreibe \( f_k=g_k-h_k \), \( g_k,h_k\in \stufenfunktionen[1] \). Dann ist \( \int h_k<\infty \) \timplies \texists \( \varphi_k\in \stufenfunktionen[0] \) \sd \( \varphi_k\leq h_k \) und \( \Integrate{h_k-\varphi_k}{x}<2^{-k} \)
