@@ -41,7 +41,7 @@ Ein Maß heißt \emph{vollständig}, wenn gilt: Ist \( N\in \Sigma \) mit \( \mu
   \end{itemize}
 \end{bemerkung*}
 \begin{satz}
-   Setze \( \mathcal{M}\definedas \Set{E\subset \reals^n|\characteristicfunction;{E}\in \stetigefunktionen[2]} \) und \( \mu(E)\definedas \Integrate{\characteristicfunction;{E}}{x} \).Dann ist \( (\reals^n,\mathcal{M},\mu) \) ein \( \varsigma \)-endlicher, vollständiger Maßraum.
+   Setze \( \mathcal{M}\definedas \Set{E\subset \reals^n|\chi_E\in \stetigefunktionen[2]} \) und \( \mu(E)\definedas \Integrate{\chi_E}{x} \).Dann ist \( (\reals^n,\mathcal{M},\mu) \) ein \( \varsigma \)-endlicher, vollständiger Maßraum.
 \end{satz}
 \begin{proof}
   Das folgt direkt aus dem verallgemeinerten Satz von Beppo-Levi. Details als Hausaufgabe.
@@ -78,7 +78,7 @@ Ein Maß heißt \emph{vollständig}, wenn gilt: Ist \( N\in \Sigma \) mit \( \mu
 \begin{folgerung}
   \begin{enumerate}
     \item\label{lebesgue_integrable_funktionen_norm} \( \explicitnorm{\lebesgueintegrablefunctions}{f}\definedas \Integrate{\abs{f}}{x} \) definiert eine Norm auf \( \lebesgueintegrablefunctions \).
-    \item\label{nullmengen_funzen_mit_sigma_algebra} \( N\subset \reals^n \) ist Nullmenge \tiff \( N\in \mathcal{M} \) und  (\s \ref{}) \( \mu(N)=\Integrate{\characteristicfunction;{N}}{x}=0 \).
+    \item\label{nullmengen_funzen_mit_sigma_algebra} \( N\subset \reals^n \) ist Nullmenge \tiff \( N\in \mathcal{M} \) und  (\s \ref{}) \( \mu(N)=\Integrate{\chi_N}{x}=0 \).
   \end{enumerate}
 \end{folgerung}
 \begin{proof}
@@ -95,7 +95,7 @@ Ein Maß heißt \emph{vollständig}, wenn gilt: Ist \( N\in \Sigma \) mit \( \mu
       \item[\rueck] klar 
       \item[\hin] \( f=f_1-f_2 \) und \emph{beide} \( \int f_1<\infty \) \emph{und} \( \int f_2<\infty \). 
     \end{proofdescription}
-    \item[\ref{nullmengen_funzen_mit_sigma_algebra}] Zu zeigen ist: \( \characteristicfunction;{N}=0\iff \Integrate{\characteristicfunction;{N}}{x}=0 \).
+    \item[\ref{nullmengen_funzen_mit_sigma_algebra}] Zu zeigen ist: \( \chi_N=0\iff \Integrate{\chi_N}{x}=0 \).
     \begin{proofdescription}
       \item[\hin] \checkmark\\
       \item[\rueck] wegen \ref{lebesgue_integrable_funktionen_norm} \checkmark. 
@@ -128,7 +128,7 @@ Ein Maß heißt \emph{vollständig}, wenn gilt: Ist \( N\in \Sigma \) mit \( \mu
   Sei \( \p*{f_k}_k\subset \lebesgueintegrablefunctions \), \( f_k\goesto f \). Gibt es \( g\in \lebesgueintegrablefunctions \), \sd \( \abs{g_k}\leq g \qquad \forall k  \), so ist \( f\in \lebesgueintegrablefunctions \) und \( \Integrate{f_k}{x}\goesto \Integrate{f}{x} \)
 \end{satz}
 \begin{bemerkung*}
-  Voraussetzung \( \abs{f_k}\leq g \) ist wichtig, wie folgendes Anti-Beispiel zeigt: \( f_k=k \characteristicfunction;{\ointerval{0}{\frac{1}{3}}} \), \( f_k\goesto f=0 \), aber \( \int f_k=1\quad \forall k \).
+  Voraussetzung \( \abs{f_k}\leq g \) ist wichtig, wie folgendes Anti-Beispiel zeigt: \( f_k=k \chi_{\ointerval{0}{\frac{1}{3}}} \), \( f_k\goesto f=0 \), aber \( \int f_k=1\quad \forall k \).
 \end{bemerkung*}
 \begin{proof}[\ref{majorisierte_konvergenz}]
   Wir wenden Faton an au \( \p*{g-f_k}_k \) und \( \p*{g+f_k}_k \) \timplies \( g-f,g+f\in \lebesgueintegrablefunctions \) und 
@@ -148,7 +148,7 @@ Ein Maß heißt \emph{vollständig}, wenn gilt: Ist \( N\in \Sigma \) mit \( \mu
   \end{equation*}
   also
   \begin{equation*}
-    \lim_{n \goesto \infty}\Integrate{\braceannotate{f_n(x)}{\characteristicfunction{\interval{0}{1}}{x}\p*{n\Sin{\frac{x}{n}}}^n}}{x}.
+    \lim_{n \goesto \infty}\Integrate{\braceannotate{f_n(x)}{\chi_{\interval{0}{1}}{x}\p*{n\Sin{\frac{x}{n}}}^n}}{x}.
   \end{equation*}
   Für \( x\in \interval{0}{1} \) ist
   \begin{equation*}
@@ -290,7 +290,7 @@ Mann kann \(\lebesgueintegrablefunctions(\interval{a}{b},\reals)\) auch durch Ve
         in \(\lebesgueintegrablefunctions\) (denn ist etwa \(x<z\), so ist \(\Med{x}{y}{z}=\Max{x,\Min{y,z}}\)).
         Wegen \(\abs{f_k}<g\forall k\) folgt die Behauptung aus \ref{theoLebesgueMajKonv}.
         \item Wähle \(A_1\subset A_2\subset\ldots,\ \mu(A_j)<\infty,\ \evaluateat{f}{\reals^n\setminus \bigcup_j A_j}=0\).
-        \(f_k\definedas \Min*{f,k\characteristicfunction;{A_k}}\in \lebesgueintegrablefunctions\) (wegen (ii) \(f_k\goesupto f\). Behauptung folgt mit \ref{theoBeppoLevi}).
+        \(f_k\definedas \Min*{f,k\chi_{A_k}}\in \lebesgueintegrablefunctions\) (wegen (ii) \(f_k\goesupto f\). Behauptung folgt mit \ref{theoBeppoLevi}).
     \end{enumerate}
 \end{proof}
 
@@ -299,12 +299,12 @@ Mann kann \(\lebesgueintegrablefunctions(\interval{a}{b},\reals)\) auch durch Ve
 
 Es gibt Funktionen, die sind Lebesgue-integrierbar, aber nicht Riemann-integrierbar.
 \begin{beispiel}
-    \(\characteristicfunction;{\rationals}\)\\
+    \(\chi_{\rationals}\)\\
     Riemann-Integration:\\
         Alle Obersummen sind 1, alle Untersummen 0. Nur Funktionen mit endlich vielen Sprungstellen / Unendlichkeiten sind Riemann-integrierbar.
 
     Lebesgue-Integration:\\
-        \( \rationals \) = Nullmenge in \( \reals \)\timplies\(\int\characteristicfunction;{\rationals}=0\). Es sind abzählbar unendlich viele Sprung- / Unendlichkeitsstellen erlaubt.
+        \( \rationals \) = Nullmenge in \( \reals \)\timplies\(\int\chi_{\rationals}=0\). Es sind abzählbar unendlich viele Sprung- / Unendlichkeitsstellen erlaubt.
 \end{beispiel}
 
 \begin{erinnerung*}
@@ -334,7 +334,7 @@ Wir zeigen stattdessen:
     \label{theoRegelFkt} % 6.25
     Eine Regelfunktion \(f\) auf \(\interval{a}{b}\) ist über \(\interval{a}{b}\) Lebesgue-integrierbar und das Regel-Integral ist gleich dem Lebesgue-Integral.
     \begin{equation*}
-        \underbrace{\Integrate{f}{x,\interval{a}{b}}}_{=\int{\characteristicfunction;{\interval{a}{b}}f{x}}}=\Integrate{f(x)}{x,a,b}
+        \underbrace{\Integrate{f}{x,\interval{a}{b}}}_{=\int{\chi_{\interval{a}{b}}f{x}}}=\Integrate{f(x)}{x,a,b}
     \end{equation*}
 \end{satz}
 
